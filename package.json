@@ -6,20 +6,33 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "upload:textbooks": "tsx scripts/batchUploadTextbooks.ts",
+    "upload:arabic": "tsx scripts/batchUploadArabicTextbooks.ts",
+    "upload:ocr": "tsx scripts/ocrFailedPDFs.ts",
+    "test:ocr": "tsx scripts/simpleOCR.ts",
+    "test:rag": "tsx scripts/testRAG.ts",
+    "test:rag-simple": "tsx scripts/simpleRAGTest.ts",
+    "test:curriculum": "tsx scripts/comprehensiveCurriculumTest.ts",
+    "upload:status": "tsx scripts/checkUploadStatus.ts",
+    "upload:reset": "tsx scripts/resetUploads.ts",
+    "cleanup:retry": "tsx scripts/retryAndCleanup.ts"
   },
   "dependencies": {
     "@langchain/community": "^0.0.30",
     "@langchain/openai": "^0.0.16",
     "ai": "^2.2.36",
     "axios": "^1.6.7",
+    "canvas": "^3.2.0",
     "dotenv": "^16.4.5",
     "filepond": "^4.30.6",
     "langchain": "^0.1.20",
     "mongodb": "5.2.0",
     "next": "14.1.0",
+    "node-fetch": "^3.3.2",
     "pdf-parse": "^1.1.1",
     "pdf2json": "^3.0.5",
+    "pdf2pic": "^3.2.0",
     "pdfjs-dist": "^4.0.379",
     "pdfreader": "^3.0.2",
     "react": "^18",
@@ -27,6 +40,7 @@
     "react-filepond": "^7.1.2",
     "react-router-dom": "^6.22.1",
     "react-toastify": "^10.0.4",
+    "tesseract.js": "^6.0.1",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
@@ -39,6 +53,7 @@
     "eslint-config-next": "14.1.0",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
+    "tsx": "^4.20.4",
     "typescript": "^5"
   }
 }
