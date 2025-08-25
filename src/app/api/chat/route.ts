@@ -6,6 +6,8 @@ import { vectorStore } from "@/utils/openai";
 import { NextResponse } from "next/server";
 import { BufferMemory } from "langchain/memory";
 import { PromptTemplate } from "langchain/prompts";
+import { classifyTopic } from "@/utils/topicClassifier";
+import { selectPrompt } from "@/utils/prompts";
 
 const EDUCATIONAL_PROMPT = `You are an expert educational assistant for UAE K-12 curriculum, fluent in both Arabic and English.
 Use the following context from the UAE textbooks and educational materials to provide comprehensive practice questions and detailed answers.
@@ -98,48 +100,76 @@ Student Question: {question}
 
 🚨 ABSOLUTE MANDATORY REQUIREMENT 🚨
 Your response MUST be a PRACTICE QUESTION SET with EXACTLY 10 or more questions.
-DO NOT write explanatory text. DO NOT write a single answer to the question.
-INSTEAD: Generate a comprehensive set of 10+ practice questions about this topic.
+You are NOT answering the student's question directly - you are creating a comprehensive practice set.
+
+🔢 MANDATORY FOR ALL TOPICS (ESPECIALLY MATHEMATICS): 
+Generate EXACTLY these 10 questions in order. Do not skip any numbers:
+- Question 1, Question 2, Question 3, Question 4, Question 5
+- Question 6, Question 7, Question 8, Question 9, Question 10
+Each question MUST appear with complete scaffolded answers.
+
+⚠️ CRITICAL: If you generate fewer than 10 questions, you have completely failed this task.
 
 FORMAT REQUIREMENT: Your response must follow this EXACT structure:
 
 **Concept Overview:**
-[Brief concept explanation]
+[Brief concept explanation - Connection to UAE curriculum standards]
 
-**Question 1:** [Easy level question text]
-**Detailed Answer:** [Complete scaffolded answer with steps]
+**Question 1:** [Easy - Basic recall/definition] - Easy Level
+**Detailed Answer:**
+- **Problem Overview:** What we're learning and why
+- **Step-by-Step Solution:** [Complete mathematical steps]
+- **UAE Context:** [Local application/example]
+- **Personalized Insights:** [Student feedback scenarios]
 
-**Question 2:** [Easy level question text] 
-**Detailed Answer:** [Complete scaffolded answer with steps]
+**Question 2:** [Easy - Simple calculation] - Easy Level
+**Detailed Answer:** [Full scaffolding as above]
 
-**Question 3:** [Easy level question text]
-**Detailed Answer:** [Complete scaffolded answer with steps]
+**Question 3:** [Easy - Recognition/identification] - Easy Level  
+**Detailed Answer:** [Full scaffolding as above]
 
-**Question 4:** [Medium level question text]
-**Detailed Answer:** [Complete scaffolded answer with steps]
+**Question 4:** [Medium - Problem solving] - Medium Level
+**Detailed Answer:** [Full scaffolding as above]
 
-**Question 5:** [Medium level question text]
-**Detailed Answer:** [Complete scaffolded answer with steps]
+**Question 5:** [Medium - Multi-step calculation] - Medium Level
+**Detailed Answer:** [Full scaffolding as above]
 
-**Question 6:** [Medium level question text]
-**Detailed Answer:** [Complete scaffolded answer with steps]
+**Question 6:** [Medium - Application to new context] - Medium Level
+**Detailed Answer:** [Full scaffolding as above]
 
-**Question 7:** [Medium level question text]
-**Detailed Answer:** [Complete scaffolded answer with steps]
+**Question 7:** [Medium - Word problem with UAE context] - Medium Level
+**Detailed Answer:** [Full scaffolding as above]
 
-**Question 8:** [Challenging level question text]
-**Detailed Answer:** [Complete scaffolded answer with steps]
+**Question 8:** [Challenging - Complex problem solving] - Challenging Level
+**Detailed Answer:** [Full scaffolding as above]
 
-**Question 9:** [Challenging level question text]  
-**Detailed Answer:** [Complete scaffolded answer with steps]
+**Question 9:** [Challenging - Multi-concept integration] - Challenging Level
+**Detailed Answer:** [Full scaffolding as above]
 
-**Question 10:** [Challenging level question text]
-**Detailed Answer:** [Complete scaffolded answer with steps]
+**Question 10:** [Challenging - Real-world UAE application] - Challenging Level
+**Detailed Answer:** [Full scaffolding as above]
 
-**Assessment Rubric:** [Quality criteria]
+**Assessment Rubric:**
+- Excellent: [Quality criteria]
+- Good: [Quality criteria]  
+- Developing: [Quality criteria]
 
-🔴 FAILURE CONDITION: If you provide fewer than 10 questions, you have completely failed this task.
-🟢 SUCCESS CONDITION: Generate Questions 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 (minimum) with detailed answers.
+🔴 ABSOLUTE FAILURE CONDITION: Missing any of Questions 1-10 = Complete failure
+🟢 SUCCESS CONDITION: Must include Questions 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 with full answers
+
+📝 TEMPLATE TO FOLLOW EXACTLY:
+**Question 1:** [text] - Easy Level  
+**Question 2:** [text] - Easy Level  
+**Question 3:** [text] - Easy Level  
+**Question 4:** [text] - Medium Level  
+**Question 5:** [text] - Medium Level  
+**Question 6:** [text] - Medium Level  
+**Question 7:** [text] - Medium Level  
+**Question 8:** [text] - Challenging Level  
+**Question 9:** [text] - Challenging Level  
+**Question 10:** [text] - Challenging Level  
+
+NOW generate your practice question set following this exact template:
 
 Response:`;
 
@@ -149,6 +179,13 @@ export async function POST(req: Request) {
     const body = await req.json();
     const messages: Message[] = body.messages ?? [];
     const question = messages[messages.length - 1].content;
+
+    // Classify the topic to select appropriate prompt
+    const topicClassification = classifyTopic(question);
+    const selectedPrompt = selectPrompt(topicClassification.type);
+
+    console.log(`📊 Topic Classification: ${topicClassification.type} (${Math.round(topicClassification.confidence * 100)}% confidence)`);
+    console.log(`🎯 Keywords found: ${topicClassification.keywords.join(', ')}`);
 
     const model = new ChatOpenAI({
       streaming: true,
@@ -173,7 +210,7 @@ export async function POST(req: Request) {
           returnMessages: true,
           outputKey: "text",
         }),
-        qaTemplate: EDUCATIONAL_PROMPT,
+        qaTemplate: selectedPrompt,
         returnSourceDocuments: true,
         verbose: false,
       }
