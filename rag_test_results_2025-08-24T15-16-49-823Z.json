@@ -1,0 +1,568 @@
+{
+  "timestamp": "2025-08-24T15:16:49.825Z",
+  "summary": {
+    "total": 62,
+    "successful": 62,
+    "failed": 0
+  },
+  "results": [
+    {
+      "grade": 1,
+      "subject": "القرآن الكريم",
+      "question": "ما هي السورة الأولى في القرآن الكريم؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 16507,
+      "success": true
+    },
+    {
+      "grade": 1,
+      "subject": "اللغة العربية",
+      "question": "ما هي حروف الهجاء العربية؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 23903,
+      "success": true
+    },
+    {
+      "grade": 1,
+      "subject": "الرياضيات",
+      "question": "كم يساوي ٢ + ٣؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 11834,
+      "success": true
+    },
+    {
+      "grade": 2,
+      "subject": "القرآن الكريم",
+      "question": "كم عدد أركان الإسلام؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 20972,
+      "success": true
+    },
+    {
+      "grade": 2,
+      "subject": "اللغة العربية",
+      "question": "ما هو جمع كلمة \"كتاب\"؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 19300,
+      "success": true
+    },
+    {
+      "grade": 2,
+      "subject": "العلوم",
+      "question": "ما هي حواس الإنسان الخمس؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 24367,
+      "success": true
+    },
+    {
+      "grade": 3,
+      "subject": "اللغة العربية",
+      "question": "اشرح الفرق بين الاسم والفعل والحرف",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 22082,
+      "success": true
+    },
+    {
+      "grade": 3,
+      "subject": "الرياضيات",
+      "question": "كيف نحسب محيط المربع؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 15792,
+      "success": true
+    },
+    {
+      "grade": 3,
+      "subject": "القرآن الكريم",
+      "question": "ما معنى البسملة؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 19183,
+      "success": true
+    },
+    {
+      "grade": 4,
+      "subject": "العلوم",
+      "question": "ما هي دورة الماء في الطبيعة؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 22943,
+      "success": true
+    },
+    {
+      "grade": 4,
+      "subject": "بلادي الكويت",
+      "question": "متى تم اكتشاف النفط في الكويت؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 27328,
+      "success": true
+    },
+    {
+      "grade": 4,
+      "subject": "اللغة العربية",
+      "question": "ما هي أنواع الجموع في اللغة العربية؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 23555,
+      "success": true
+    },
+    {
+      "grade": 4,
+      "subject": "الرياضيات",
+      "question": "اشرح عملية القسمة الطويلة",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 27608,
+      "success": true
+    },
+    {
+      "grade": 4,
+      "subject": "TIMSS علوم",
+      "question": "What are the states of matter?",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 13806,
+      "success": true
+    },
+    {
+      "grade": 5,
+      "subject": "اللغة العربية",
+      "question": "ما هي علامات الإعراب الأصلية والفرعية؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 29500,
+      "success": true
+    },
+    {
+      "grade": 5,
+      "subject": "الرياضيات",
+      "question": "كيف نحول الكسور العادية إلى كسور عشرية؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 23948,
+      "success": true
+    },
+    {
+      "grade": 5,
+      "subject": "العلوم",
+      "question": "اشرح عملية البناء الضوئي",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 21240,
+      "success": true
+    },
+    {
+      "grade": 5,
+      "subject": "بلادي الكويت",
+      "question": "ما هي محافظات دولة الكويت؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 27314,
+      "success": true
+    },
+    {
+      "grade": 5,
+      "subject": "عالمنا الرقمي",
+      "question": "ما هي مكونات الحاسوب الأساسية؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 28464,
+      "success": true
+    },
+    {
+      "grade": 5,
+      "subject": "English",
+      "question": "What are the parts of speech in English?",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 17369,
+      "success": true
+    },
+    {
+      "grade": 6,
+      "subject": "اللغة العربية",
+      "question": "ما هي البحور الشعرية؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 27795,
+      "success": true
+    },
+    {
+      "grade": 6,
+      "subject": "الرياضيات",
+      "question": "اشرح مفهوم النسبة والتناسب",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 27739,
+      "success": true
+    },
+    {
+      "grade": 6,
+      "subject": "العلوم",
+      "question": "ما هي أجهزة جسم الإنسان؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 36668,
+      "success": true
+    },
+    {
+      "grade": 6,
+      "subject": "عالم التقنية",
+      "question": "ما هي لغات البرمجة الأساسية؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 33204,
+      "success": true
+    },
+    {
+      "grade": 6,
+      "subject": "Mixed",
+      "question": "Compare photosynthesis and respiration عمليتي البناء الضوئي والتنفس",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 25904,
+      "success": true
+    },
+    {
+      "grade": 7,
+      "subject": "اللغة العربية",
+      "question": "اشرح أنواع الخبر في الجملة الاسمية",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 23829,
+      "success": true
+    },
+    {
+      "grade": 7,
+      "subject": "الرياضيات",
+      "question": "كيف نحل المعادلات من الدرجة الأولى؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 24315,
+      "success": true
+    },
+    {
+      "grade": 7,
+      "subject": "العلوم",
+      "question": "ما هي أنواع الصخور وكيف تتكون؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 24184,
+      "success": true
+    },
+    {
+      "grade": 7,
+      "subject": "الاجتماعيات",
+      "question": "ما هي أسباب قيام الحضارة الإسلامية؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 25561,
+      "success": true
+    },
+    {
+      "grade": 7,
+      "subject": "عالم التقنية",
+      "question": "ما هو الذكاء الاصطناعي وتطبيقاته؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 32907,
+      "success": true
+    },
+    {
+      "grade": 8,
+      "subject": "اللغة العربية",
+      "question": "ما هي المشتقات في اللغة العربية؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 21071,
+      "success": true
+    },
+    {
+      "grade": 8,
+      "subject": "الرياضيات",
+      "question": "اشرح نظرية فيثاغورس وتطبيقاتها",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 24471,
+      "success": true
+    },
+    {
+      "grade": 8,
+      "subject": "العلوم",
+      "question": "ما هي قوانين نيوتن للحركة؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 26691,
+      "success": true
+    },
+    {
+      "grade": 8,
+      "subject": "الاجتماعيات",
+      "question": "ما هي نتائج الحرب العالمية الأولى؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 32620,
+      "success": true
+    },
+    {
+      "grade": 8,
+      "subject": "TIMSS رياضيات",
+      "question": "Explain algebraic expressions and equations",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 18120,
+      "success": true
+    },
+    {
+      "grade": 8,
+      "subject": "Mixed",
+      "question": "Explain Pythagorean theorem نظرية فيثاغورس with examples",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 13516,
+      "success": true
+    },
+    {
+      "grade": 9,
+      "subject": "اللغة العربية",
+      "question": "اشرح علم البيان وأقسامه",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 25843,
+      "success": true
+    },
+    {
+      "grade": 9,
+      "subject": "الرياضيات",
+      "question": "ما هي الدوال المثلثية الأساسية؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 28241,
+      "success": true
+    },
+    {
+      "grade": 9,
+      "subject": "الفيزياء",
+      "question": "اشرح قانون أوم للكهرباء",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 25336,
+      "success": true
+    },
+    {
+      "grade": 9,
+      "subject": "الكيمياء",
+      "question": "ما هو الجدول الدوري وكيف نستخدمه؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 34368,
+      "success": true
+    },
+    {
+      "grade": 9,
+      "subject": "الأحياء",
+      "question": "اشرح عملية الانقسام الخلوي",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 28198,
+      "success": true
+    },
+    {
+      "grade": 10,
+      "subject": "فنون البلاغة",
+      "question": "ما هي أنواع المحسنات البديعية؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 25891,
+      "success": true
+    },
+    {
+      "grade": 10,
+      "subject": "قواعد النحو والصرف",
+      "question": "اشرح أحكام العدد والمعدود",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 25247,
+      "success": true
+    },
+    {
+      "grade": 10,
+      "subject": "الرياضيات",
+      "question": "كيف نحل المعادلات من الدرجة الثانية؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 31371,
+      "success": true
+    },
+    {
+      "grade": 10,
+      "subject": "الفيزياء",
+      "question": "ما هي قوانين الديناميكا الحرارية؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 31558,
+      "success": true
+    },
+    {
+      "grade": 10,
+      "subject": "الكيمياء",
+      "question": "اشرح أنواع التفاعلات الكيميائية",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 33469,
+      "success": true
+    },
+    {
+      "grade": 10,
+      "subject": "Mixed",
+      "question": "What are chemical bonds? ما هي الروابط الكيميائية؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 30153,
+      "success": true
+    },
+    {
+      "grade": 11,
+      "subject": "فنون البلاغة",
+      "question": "اشرح علم المعاني وأبوابه",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 24643,
+      "success": true
+    },
+    {
+      "grade": 11,
+      "subject": "قواعد النحو والصرف",
+      "question": "ما هي أحكام الممنوع من الصرف؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 24079,
+      "success": true
+    },
+    {
+      "grade": 11,
+      "subject": "الرياضيات",
+      "question": "اشرح مفهوم التفاضل والتكامل",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 33853,
+      "success": true
+    },
+    {
+      "grade": 11,
+      "subject": "الفيزياء",
+      "question": "ما هي النظرية النسبية لأينشتاين؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 32088,
+      "success": true
+    },
+    {
+      "grade": 11,
+      "subject": "الكيمياء",
+      "question": "اشرح الكيمياء العضوية والمركبات الهيدروكربونية",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 24614,
+      "success": true
+    },
+    {
+      "grade": 11,
+      "subject": "الأحياء",
+      "question": "ما هي الهندسة الوراثية وتطبيقاتها؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 34258,
+      "success": true
+    },
+    {
+      "grade": 11,
+      "subject": "الجيولوجيا",
+      "question": "اشرح نظرية الصفائح التكتونية",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 36072,
+      "success": true
+    },
+    {
+      "grade": 11,
+      "subject": "علم النفس والاجتماع",
+      "question": "ما هي نظريات التعلم في علم النفس؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 32309,
+      "success": true
+    },
+    {
+      "grade": 11,
+      "subject": "الجغرافيا والاقتصاد",
+      "question": "اشرح العوامل المؤثرة في التنمية الاقتصادية",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 35729,
+      "success": true
+    },
+    {
+      "grade": 11,
+      "subject": "اللغة الفرنسية",
+      "question": "Quels sont les temps verbaux en français?",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 20109,
+      "success": true
+    },
+    {
+      "grade": 12,
+      "subject": "الفلسفة",
+      "question": "ما هي المدارس الفلسفية الرئيسية؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 29335,
+      "success": true
+    },
+    {
+      "grade": 12,
+      "subject": "الرياضيات",
+      "question": "اشرح المصفوفات والمحددات",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 24893,
+      "success": true
+    },
+    {
+      "grade": 12,
+      "subject": "الفيزياء",
+      "question": "ما هي ميكانيكا الكم؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 25347,
+      "success": true
+    },
+    {
+      "grade": 12,
+      "subject": "الكيمياء",
+      "question": "اشرح الاتزان الكيميائي وقانون لوشاتلييه",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 34741,
+      "success": true
+    },
+    {
+      "grade": 12,
+      "subject": "الأحياء",
+      "question": "ما هي نظرية التطور وأدلتها؟",
+      "responsePreview": "",
+      "responseLength": 0,
+      "responseTime": 24017,
+      "success": true
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "name": "vector_index",
+  "type": "vectorSearch",
+  "definition": {
+    "fields": [
+      {
+        "type": "vector",
+        "path": "text_embedding",
+        "numDimensions": 1536,
+        "similarity": "cosine"
+      },
+      {
+        "type": "filter",
+        "path": "source"
+      },
+      {
+        "type": "filter", 
+        "path": "type"
+      },
+      {
+        "type": "filter",
+        "path": "language"
+      },
+      {
+        "type": "filter",
+        "path": "extractionMethod"
+      },
+      {
+        "type": "filter",
+        "path": "chunkIndex"
+      },
+      {
+        "type": "filter",
+        "path": "totalChunks"
+      }
+    ]
+  }
+}

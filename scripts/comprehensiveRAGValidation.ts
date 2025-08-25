@@ -1,7 +1,7 @@
-import { MongoClient } from 'mongodb';
-import dotenv from 'dotenv';
+import { MongoClient } from "mongodb";
+import dotenv from "dotenv";
 
-dotenv.config({ path: '.env.local' });
+dotenv.config({ path: ".env.local" });
 
 interface ComprehensiveTest {
   grade: number;
@@ -9,8 +9,8 @@ interface ComprehensiveTest {
   chapter: string;
   question: string;
   expectedContent: string[];
-  difficulty: 'basic' | 'intermediate' | 'advanced';
-  type: 'definition' | 'explanation' | 'application' | 'analysis';
+  difficulty: "basic" | "intermediate" | "advanced";
+  type: "definition" | "explanation" | "application" | "analysis";
 }
 
 const comprehensiveTests: ComprehensiveTest[] = [
@@ -22,7 +22,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي الحروف الثلاثة الأولى في الأبجدية العربية؟",
     expectedContent: ["ألف", "باء", "تاء", "حروف", "أبجدية"],
     difficulty: "basic",
-    type: "definition"
+    type: "definition",
   },
   {
     grade: 1,
@@ -31,7 +31,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "كيف نكتب الرقم خمسة؟",
     expectedContent: ["خمسة", "٥", "5", "رقم", "عدد"],
     difficulty: "basic",
-    type: "application"
+    type: "application",
   },
   {
     grade: 1,
@@ -40,7 +40,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما الفرق بين النبات والحيوان؟",
     expectedContent: ["نبات", "حيوان", "كائن حي", "حركة", "غذاء"],
     difficulty: "basic",
-    type: "explanation"
+    type: "explanation",
   },
   {
     grade: 1,
@@ -49,7 +49,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "كيف نتوضأ؟",
     expectedContent: ["وضوء", "طهارة", "ماء", "وجه", "يدين"],
     difficulty: "basic",
-    type: "application"
+    type: "application",
   },
 
   // Grade 2 Tests
@@ -60,7 +60,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي الكلمة وما هي الجملة؟",
     expectedContent: ["كلمة", "جملة", "معنى", "حروف", "تركيب"],
     difficulty: "basic",
-    type: "definition"
+    type: "definition",
   },
   {
     grade: 2,
@@ -69,7 +69,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "كيف نجمع ونطرح الأرقام؟",
     expectedContent: ["جمع", "طرح", "عملية", "حساب", "نتيجة"],
     difficulty: "basic",
-    type: "application"
+    type: "application",
   },
   {
     grade: 2,
@@ -78,7 +78,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي الحواس الخمس؟",
     expectedContent: ["حواس", "نظر", "سمع", "شم", "ذوق", "لمس"],
     difficulty: "basic",
-    type: "definition"
+    type: "definition",
   },
   {
     grade: 2,
@@ -87,7 +87,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي أركان الإسلام الخمسة؟",
     expectedContent: ["شهادة", "صلاة", "زكاة", "صوم", "حج", "أركان"],
     difficulty: "basic",
-    type: "definition"
+    type: "definition",
   },
 
   // Grade 3 Tests
@@ -98,7 +98,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "كيف نفهم معنى النص؟",
     expectedContent: ["قراءة", "فهم", "معنى", "نص", "تفكير"],
     difficulty: "intermediate",
-    type: "explanation"
+    type: "explanation",
   },
   {
     grade: 3,
@@ -107,7 +107,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي عملية الضرب؟",
     expectedContent: ["ضرب", "قسمة", "جدول", "عملية", "رقم"],
     difficulty: "intermediate",
-    type: "explanation"
+    type: "explanation",
   },
   {
     grade: 3,
@@ -116,7 +116,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "كيف تنمو النباتات؟",
     expectedContent: ["نمو", "بذرة", "شجرة", "ماء", "ضوء", "تربة"],
     difficulty: "intermediate",
-    type: "explanation"
+    type: "explanation",
   },
   {
     grade: 3,
@@ -125,7 +125,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي أفراد العائلة؟",
     expectedContent: ["عائلة", "أب", "أم", "أطفال", "مجتمع"],
     difficulty: "basic",
-    type: "definition"
+    type: "definition",
   },
 
   // Grade 4 Tests
@@ -136,7 +136,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي أنواع الكلمة في اللغة العربية؟",
     expectedContent: ["اسم", "فعل", "حرف", "كلمة", "نحو"],
     difficulty: "intermediate",
-    type: "definition"
+    type: "definition",
   },
   {
     grade: 4,
@@ -145,7 +145,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هو الكسر وكيف نكتبه؟",
     expectedContent: ["كسر", "بسط", "مقام", "جزء", "عدد"],
     difficulty: "intermediate",
-    type: "definition"
+    type: "definition",
   },
   {
     grade: 4,
@@ -154,7 +154,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما الفرق بين الطقس والمناخ؟",
     expectedContent: ["طقس", "مناخ", "حرارة", "أمطار", "رياح"],
     difficulty: "intermediate",
-    type: "explanation"
+    type: "explanation",
   },
   {
     grade: 4,
@@ -163,7 +163,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "كيف نؤدي الصلاة؟",
     expectedContent: ["صلاة", "ركعة", "سجود", "ركوع", "تكبير"],
     difficulty: "intermediate",
-    type: "application"
+    type: "application",
   },
 
   // Grade 5 Tests
@@ -174,7 +174,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هو الشعر وما هي أجزاؤه؟",
     expectedContent: ["شعر", "بيت", "شطر", "قافية", "بحر"],
     difficulty: "intermediate",
-    type: "definition"
+    type: "definition",
   },
   {
     grade: 5,
@@ -183,7 +183,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "كيف نحسب مساحة المستطيل؟",
     expectedContent: ["مساحة", "مستطيل", "طول", "عرض", "ضرب"],
     difficulty: "intermediate",
-    type: "application"
+    type: "application",
   },
   {
     grade: 5,
@@ -192,16 +192,23 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي أجهزة جسم الإنسان؟",
     expectedContent: ["جهاز", "هضم", "تنفس", "دوران", "عصبي"],
     difficulty: "intermediate",
-    type: "definition"
+    type: "definition",
   },
   {
     grade: 5,
     subject: "الدراسات الاجتماعية",
     chapter: "دول الخليج",
     question: "ما هي دول مجلس التعاون الخليجي؟",
-    expectedContent: ["الكويت", "السعودية", "الإمارات", "قطر", "البحرين", "عمان"],
+    expectedContent: [
+      "الكويت",
+      "السعودية",
+      "الإمارات",
+      "قطر",
+      "البحرين",
+      "عمان",
+    ],
     difficulty: "basic",
-    type: "definition"
+    type: "definition",
   },
 
   // Grade 6 Tests
@@ -212,7 +219,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هو التشبيه في الأدب؟",
     expectedContent: ["تشبيه", "مشبه", "مشبه به", "أداة", "وجه شبه"],
     difficulty: "intermediate",
-    type: "definition"
+    type: "definition",
   },
   {
     grade: 6,
@@ -221,7 +228,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي النسبة والتناسب؟",
     expectedContent: ["نسبة", "تناسب", "كسر", "مقارنة", "تساوي"],
     difficulty: "intermediate",
-    type: "definition"
+    type: "definition",
   },
   {
     grade: 6,
@@ -230,7 +237,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي أنواع الطاقة؟",
     expectedContent: ["طاقة", "حركة", "حرارة", "ضوء", "صوت"],
     difficulty: "intermediate",
-    type: "definition"
+    type: "definition",
   },
   {
     grade: 6,
@@ -239,7 +246,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي آداب تلاوة القرآن؟",
     expectedContent: ["تلاوة", "تجويد", "وضوء", "قبلة", "احترام"],
     difficulty: "intermediate",
-    type: "application"
+    type: "application",
   },
 
   // Grade 7 Tests
@@ -250,7 +257,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "كيف نحلل النص الأدبي؟",
     expectedContent: ["تحليل", "نقد", "أسلوب", "معنى", "جمال"],
     difficulty: "advanced",
-    type: "analysis"
+    type: "analysis",
   },
   {
     grade: 7,
@@ -259,7 +266,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي المتغيرات في الجبر؟",
     expectedContent: ["متغير", "معادلة", "حل", "جبر", "رمز"],
     difficulty: "advanced",
-    type: "definition"
+    type: "definition",
   },
   {
     grade: 7,
@@ -268,7 +275,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي أجزاء الخلية النباتية؟",
     expectedContent: ["خلية", "نواة", "سيتوبلازم", "جدار خلوي", "بلاستيدات"],
     difficulty: "advanced",
-    type: "definition"
+    type: "definition",
   },
   {
     grade: 7,
@@ -277,7 +284,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي أهم أحداث السيرة النبوية؟",
     expectedContent: ["سيرة", "نبوي", "هجرة", "غزوات", "فتح مكة"],
     difficulty: "intermediate",
-    type: "definition"
+    type: "definition",
   },
 
   // Grade 8 Tests
@@ -288,7 +295,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي علامات الإعراب؟",
     expectedContent: ["إعراب", "ضمة", "فتحة", "كسرة", "سكون"],
     difficulty: "advanced",
-    type: "definition"
+    type: "definition",
   },
   {
     grade: 8,
@@ -297,7 +304,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "كيف نجد معادلة الخط المستقيم؟",
     expectedContent: ["معادلة", "خط مستقيم", "ميل", "نقطة", "إحداثيات"],
     difficulty: "advanced",
-    type: "application"
+    type: "application",
   },
   {
     grade: 8,
@@ -306,7 +313,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هو قانون نيوتن الأول؟",
     expectedContent: ["نيوتن", "قانون", "قصور", "حركة", "قوة"],
     difficulty: "advanced",
-    type: "definition"
+    type: "definition",
   },
   {
     grade: 8,
@@ -315,7 +322,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي أنواع التفاعلات الكيميائية؟",
     expectedContent: ["تفاعل", "كيميائي", "أكسدة", "اختزال", "تركيب"],
     difficulty: "advanced",
-    type: "definition"
+    type: "definition",
   },
 
   // Grade 9 Tests
@@ -326,7 +333,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي خصائص الشعر الحديث؟",
     expectedContent: ["شعر حديث", "تجديد", "موضوعات", "أسلوب", "تطور"],
     difficulty: "advanced",
-    type: "analysis"
+    type: "analysis",
   },
   {
     grade: 9,
@@ -335,7 +342,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي النسب المثلثية؟",
     expectedContent: ["مثلث", "جيب", "جيب تمام", "ظل", "زاوية"],
     difficulty: "advanced",
-    type: "definition"
+    type: "definition",
   },
   {
     grade: 9,
@@ -344,7 +351,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "كيف تنتقل الصفات الوراثية؟",
     expectedContent: ["وراثة", "جينات", "كروموسومات", "صفات", "انتقال"],
     difficulty: "advanced",
-    type: "explanation"
+    type: "explanation",
   },
   {
     grade: 9,
@@ -353,7 +360,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي العوامل المؤثرة في المناخ؟",
     expectedContent: ["مناخ", "عوامل", "حرارة", "رطوبة", "موقع"],
     difficulty: "advanced",
-    type: "explanation"
+    type: "explanation",
   },
 
   // Grade 10 Tests
@@ -364,7 +371,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي أنواع البديع في البلاغة؟",
     expectedContent: ["بديع", "جناس", "طباق", "سجع", "بلاغة"],
     difficulty: "advanced",
-    type: "definition"
+    type: "definition",
   },
   {
     grade: 10,
@@ -373,7 +380,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هو مفهوم النهاية؟",
     expectedContent: ["نهاية", "تفاضل", "تكامل", "دالة", "حد"],
     difficulty: "advanced",
-    type: "definition"
+    type: "definition",
   },
   {
     grade: 10,
@@ -382,7 +389,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هو قانون أوم؟",
     expectedContent: ["أوم", "تيار", "جهد", "مقاومة", "كهرباء"],
     difficulty: "advanced",
-    type: "definition"
+    type: "definition",
   },
   {
     grade: 10,
@@ -391,7 +398,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "What are the main tenses in English?",
     expectedContent: ["present", "past", "future", "tense", "grammar"],
     difficulty: "intermediate",
-    type: "definition"
+    type: "definition",
   },
 
   // Grade 11 Tests
@@ -402,7 +409,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي خصائص الشعر الجاهلي؟",
     expectedContent: ["جاهلي", "معلقات", "فروسية", "طبيعة", "بداوة"],
     difficulty: "advanced",
-    type: "analysis"
+    type: "analysis",
   },
   {
     grade: 11,
@@ -411,7 +418,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي المتتالية الحسابية؟",
     expectedContent: ["متتالية", "حسابية", "أساس", "حد", "مجموع"],
     difficulty: "advanced",
-    type: "definition"
+    type: "definition",
   },
   {
     grade: 11,
@@ -420,7 +427,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "كيف تتكون الصورة في العدسة؟",
     expectedContent: ["عدسة", "صورة", "انكسار", "بؤرة", "ضوء"],
     difficulty: "advanced",
-    type: "explanation"
+    type: "explanation",
   },
   {
     grade: 11,
@@ -429,7 +436,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي أهم إنجازات العصر العباسي؟",
     expectedContent: ["عباسي", "خلافة", "بغداد", "ترجمة", "علوم"],
     difficulty: "advanced",
-    type: "explanation"
+    type: "explanation",
   },
 
   // Grade 12 Tests
@@ -440,7 +447,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي اتجاهات الأدب العربي المعاصر؟",
     expectedContent: ["أدب معاصر", "تجديد", "واقعية", "رمزية", "حداثة"],
     difficulty: "advanced",
-    type: "analysis"
+    type: "analysis",
   },
   {
     grade: 12,
@@ -449,7 +456,7 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي قوانين الاحتمال؟",
     expectedContent: ["احتمال", "إحصاء", "عينة", "توزيع", "متوسط"],
     difficulty: "advanced",
-    type: "definition"
+    type: "definition",
   },
   {
     grade: 12,
@@ -458,16 +465,22 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي نظرية النسبية؟",
     expectedContent: ["نسبية", "أينشتاين", "طاقة", "كتلة", "سرعة الضوء"],
     difficulty: "advanced",
-    type: "explanation"
+    type: "explanation",
   },
   {
     grade: 12,
     subject: "الكيمياء",
     chapter: "الكيمياء العضوية",
     question: "ما هي خصائص المركبات العضوية؟",
-    expectedContent: ["عضوية", "كربون", "هيدروكربونات", "مجموعات وظيفية", "تفاعلات"],
+    expectedContent: [
+      "عضوية",
+      "كربون",
+      "هيدروكربونات",
+      "مجموعات وظيفية",
+      "تفاعلات",
+    ],
     difficulty: "advanced",
-    type: "explanation"
+    type: "explanation",
   },
   {
     grade: 12,
@@ -476,8 +489,8 @@ const comprehensiveTests: ComprehensiveTest[] = [
     question: "ما هي أنواع الأنشطة الاقتصادية؟",
     expectedContent: ["اقتصاد", "زراعة", "صناعة", "خدمات", "تجارة"],
     difficulty: "advanced",
-    type: "definition"
-  }
+    type: "definition",
+  },
 ];
 
 class ComprehensiveRAGValidator {
@@ -491,14 +504,14 @@ class ComprehensiveRAGValidator {
 
   async connect() {
     await this.client.connect();
-    this.db = this.client.db('chatter');
-    this.dataCollection = this.db.collection('training_data');
-    console.log('✅ Connected to MongoDB for comprehensive RAG validation');
+    this.db = this.client.db("chatter");
+    this.dataCollection = this.db.collection("training_data");
+    console.log("✅ Connected to MongoDB for comprehensive RAG validation");
   }
 
   async disconnect() {
     await this.client.close();
-    console.log('👋 Disconnected from MongoDB');
+    console.log("👋 Disconnected from MongoDB");
   }
 
   async validateSingleTest(test: ComprehensiveTest): Promise<any> {
@@ -509,13 +522,16 @@ class ComprehensiveRAGValidator {
 
     let totalMatches = 0;
     let relevantChunks: any[] = [];
-    
+
     // Search for each expected content piece
     for (const content of test.expectedContent) {
-      const chunks = await this.dataCollection.find({
-        text: { $regex: content, $options: 'i' }
-      }).limit(3).toArray();
-      
+      const chunks = await this.dataCollection
+        .find({
+          text: { $regex: content, $options: "i" },
+        })
+        .limit(3)
+        .toArray();
+
       if (chunks.length > 0) {
         totalMatches++;
         relevantChunks.push(...chunks.slice(0, 1)); // Add one chunk per content
@@ -523,32 +539,36 @@ class ComprehensiveRAGValidator {
     }
 
     const coverageScore = (totalMatches / test.expectedContent.length) * 100;
-    
-    console.log(`📊 Content Coverage: ${totalMatches}/${test.expectedContent.length} (${coverageScore.toFixed(1)}%)`);
+
+    console.log(
+      `📊 Content Coverage: ${totalMatches}/${
+        test.expectedContent.length
+      } (${coverageScore.toFixed(1)}%)`
+    );
     console.log(`📝 Relevant Chunks Found: ${relevantChunks.length}`);
-    
+
     if (relevantChunks.length > 0) {
       const bestChunk = relevantChunks[0];
-      const preview = bestChunk.text.substring(0, 120).replace(/\s+/g, ' ');
+      const preview = bestChunk.text.substring(0, 120).replace(/\s+/g, " ");
       console.log(`💡 Best Match Preview: "${preview}..."`);
-      console.log(`📖 Source: ${bestChunk.source || 'Unknown'}`);
+      console.log(`📖 Source: ${bestChunk.source || "Unknown"}`);
     }
 
-    let status = '';
+    let status = "";
     if (coverageScore >= 80) {
-      status = '🌟 EXCELLENT';
+      status = "🌟 EXCELLENT";
     } else if (coverageScore >= 60) {
-      status = '✅ GOOD';
+      status = "✅ GOOD";
     } else if (coverageScore >= 40) {
-      status = '⚠️  FAIR';
+      status = "⚠️  FAIR";
     } else if (coverageScore >= 20) {
-      status = '🔶 POOR';
+      status = "🔶 POOR";
     } else {
-      status = '❌ MISSING';
+      status = "❌ MISSING";
     }
-    
+
     console.log(`🏆 Status: ${status}`);
-    
+
     return {
       grade: test.grade,
       subject: test.subject,
@@ -561,41 +581,41 @@ class ComprehensiveRAGValidator {
       expectedCount: test.expectedContent.length,
       relevantChunks: relevantChunks.length,
       status,
-      bestMatch: relevantChunks.length > 0 ? relevantChunks[0].source : null
+      bestMatch: relevantChunks.length > 0 ? relevantChunks[0].source : null,
     };
   }
 
   async runComprehensiveValidation() {
-    console.log('🚀 Starting Comprehensive RAG Validation');
-    console.log('📋 Testing Kuwaiti School Curriculum (Grades 1-12)');
-    console.log('=' .repeat(70));
-    
+    console.log("🚀 Starting Comprehensive RAG Validation");
+    console.log("=".repeat(70));
+
     const results: any[] = [];
     let totalTests = 0;
     let passedTests = 0;
-    
+
     // Group tests by grade for better organization
     const testsByGrade = comprehensiveTests.reduce((acc, test) => {
       if (!acc[test.grade]) acc[test.grade] = [];
       acc[test.grade].push(test);
       return acc;
-    }, {} as {[key: number]: ComprehensiveTest[]});
+    }, {} as { [key: number]: ComprehensiveTest[] });
 
     for (let grade = 1; grade <= 12; grade++) {
       if (testsByGrade[grade]) {
         console.log(`\n🎒 === GRADE ${grade} VALIDATION ===`);
-        
+
         for (const test of testsByGrade[grade]) {
           const result = await this.validateSingleTest(test);
           results.push(result);
           totalTests++;
-          
-          if (result.coverageScore >= 40) { // 40% threshold for passing
+
+          if (result.coverageScore >= 40) {
+            // 40% threshold for passing
             passedTests++;
           }
-          
+
           // Small delay between tests
-          await new Promise(resolve => setTimeout(resolve, 500));
+          await new Promise((resolve) => setTimeout(resolve, 500));
         }
       }
     }
@@ -604,94 +624,153 @@ class ComprehensiveRAGValidator {
     await this.generateComprehensiveReport(results, totalTests, passedTests);
   }
 
-  async generateComprehensiveReport(results: any[], totalTests: number, passedTests: number) {
-    console.log('\n📈 COMPREHENSIVE VALIDATION REPORT');
-    console.log('=' .repeat(70));
-    
+  async generateComprehensiveReport(
+    results: any[],
+    totalTests: number,
+    passedTests: number
+  ) {
+    console.log("\n📈 COMPREHENSIVE VALIDATION REPORT");
+    console.log("=".repeat(70));
+
     const overallPassRate = (passedTests / totalTests) * 100;
-    console.log(`📊 Overall Results: ${passedTests}/${totalTests} tests passed (${overallPassRate.toFixed(1)}%)`);
-    
+    console.log(
+      `📊 Overall Results: ${passedTests}/${totalTests} tests passed (${overallPassRate.toFixed(
+        1
+      )}%)`
+    );
+
     // Grade-wise analysis
-    console.log('\n🎓 GRADE-WISE ANALYSIS:');
-    const gradeStats = new Map<number, {passed: number, total: number, avgScore: number}>();
-    
-    results.forEach(result => {
+    console.log("\n🎓 GRADE-WISE ANALYSIS:");
+    const gradeStats = new Map<
+      number,
+      { passed: number; total: number; avgScore: number }
+    >();
+
+    results.forEach((result) => {
       const grade = result.grade;
-      const current = gradeStats.get(grade) || {passed: 0, total: 0, avgScore: 0};
+      const current = gradeStats.get(grade) || {
+        passed: 0,
+        total: 0,
+        avgScore: 0,
+      };
       current.total++;
       current.avgScore += result.coverageScore;
       if (result.coverageScore >= 40) current.passed++;
       gradeStats.set(grade, current);
     });
-    
-    Array.from(gradeStats.entries()).sort().forEach(([grade, stats]) => {
-      const passRate = (stats.passed / stats.total) * 100;
-      const avgScore = (stats.avgScore / stats.total).toFixed(1);
-      console.log(`Grade ${grade}: ${stats.passed}/${stats.total} (${passRate.toFixed(1)}%) - Avg Score: ${avgScore}%`);
-    });
+
+    Array.from(gradeStats.entries())
+      .sort()
+      .forEach(([grade, stats]) => {
+        const passRate = (stats.passed / stats.total) * 100;
+        const avgScore = (stats.avgScore / stats.total).toFixed(1);
+        console.log(
+          `Grade ${grade}: ${stats.passed}/${stats.total} (${passRate.toFixed(
+            1
+          )}%) - Avg Score: ${avgScore}%`
+        );
+      });
 
     // Subject-wise analysis
-    console.log('\n📚 SUBJECT-WISE ANALYSIS:');
-    const subjectStats = new Map<string, {passed: number, total: number, avgScore: number}>();
-    
-    results.forEach(result => {
+    console.log("\n📚 SUBJECT-WISE ANALYSIS:");
+    const subjectStats = new Map<
+      string,
+      { passed: number; total: number; avgScore: number }
+    >();
+
+    results.forEach((result) => {
       const subject = result.subject;
-      const current = subjectStats.get(subject) || {passed: 0, total: 0, avgScore: 0};
+      const current = subjectStats.get(subject) || {
+        passed: 0,
+        total: 0,
+        avgScore: 0,
+      };
       current.total++;
       current.avgScore += result.coverageScore;
       if (result.coverageScore >= 40) current.passed++;
       subjectStats.set(subject, current);
     });
-    
+
     Array.from(subjectStats.entries()).forEach(([subject, stats]) => {
       const passRate = (stats.passed / stats.total) * 100;
       const avgScore = (stats.avgScore / stats.total).toFixed(1);
-      console.log(`${subject}: ${stats.passed}/${stats.total} (${passRate.toFixed(1)}%) - Avg Score: ${avgScore}%`);
+      console.log(
+        `${subject}: ${stats.passed}/${stats.total} (${passRate.toFixed(
+          1
+        )}%) - Avg Score: ${avgScore}%`
+      );
     });
 
     // Difficulty analysis
-    console.log('\n🎯 DIFFICULTY ANALYSIS:');
-    const difficultyStats = new Map<string, {passed: number, total: number, avgScore: number}>();
-    
-    results.forEach(result => {
+    console.log("\n🎯 DIFFICULTY ANALYSIS:");
+    const difficultyStats = new Map<
+      string,
+      { passed: number; total: number; avgScore: number }
+    >();
+
+    results.forEach((result) => {
       const difficulty = result.difficulty;
-      const current = difficultyStats.get(difficulty) || {passed: 0, total: 0, avgScore: 0};
+      const current = difficultyStats.get(difficulty) || {
+        passed: 0,
+        total: 0,
+        avgScore: 0,
+      };
       current.total++;
       current.avgScore += result.coverageScore;
       if (result.coverageScore >= 40) current.passed++;
       difficultyStats.set(difficulty, current);
     });
-    
+
     Array.from(difficultyStats.entries()).forEach(([difficulty, stats]) => {
       const passRate = (stats.passed / stats.total) * 100;
       const avgScore = (stats.avgScore / stats.total).toFixed(1);
-      console.log(`${difficulty}: ${stats.passed}/${stats.total} (${passRate.toFixed(1)}%) - Avg Score: ${avgScore}%`);
+      console.log(
+        `${difficulty}: ${stats.passed}/${stats.total} (${passRate.toFixed(
+          1
+        )}%) - Avg Score: ${avgScore}%`
+      );
     });
 
     // Top performing areas
-    console.log('\n🌟 TOP PERFORMING AREAS:');
-    const excellent = results.filter(r => r.coverageScore >= 80).slice(0, 5);
-    excellent.forEach(result => {
-      console.log(`- Grade ${result.grade} ${result.subject}: ${result.coverageScore.toFixed(1)}% (${result.chapter})`);
+    console.log("\n🌟 TOP PERFORMING AREAS:");
+    const excellent = results.filter((r) => r.coverageScore >= 80).slice(0, 5);
+    excellent.forEach((result) => {
+      console.log(
+        `- Grade ${result.grade} ${
+          result.subject
+        }: ${result.coverageScore.toFixed(1)}% (${result.chapter})`
+      );
     });
 
     // Areas needing improvement
-    console.log('\n🔴 AREAS NEEDING IMPROVEMENT:');
-    const needsWork = results.filter(r => r.coverageScore < 40).slice(0, 5);
-    needsWork.forEach(result => {
-      console.log(`- Grade ${result.grade} ${result.subject}: ${result.coverageScore.toFixed(1)}% (${result.chapter})`);
+    console.log("\n🔴 AREAS NEEDING IMPROVEMENT:");
+    const needsWork = results.filter((r) => r.coverageScore < 40).slice(0, 5);
+    needsWork.forEach((result) => {
+      console.log(
+        `- Grade ${result.grade} ${
+          result.subject
+        }: ${result.coverageScore.toFixed(1)}% (${result.chapter})`
+      );
     });
 
     // Overall assessment
-    console.log('\n🎯 OVERALL ASSESSMENT:');
+    console.log("\n🎯 OVERALL ASSESSMENT:");
     if (overallPassRate >= 80) {
-      console.log('🌟 EXCELLENT: Curriculum coverage is comprehensive across grades and subjects');
+      console.log(
+        "🌟 EXCELLENT: Curriculum coverage is comprehensive across grades and subjects"
+      );
     } else if (overallPassRate >= 60) {
-      console.log('✅ GOOD: Strong curriculum foundation with some gaps to address');
+      console.log(
+        "✅ GOOD: Strong curriculum foundation with some gaps to address"
+      );
     } else if (overallPassRate >= 40) {
-      console.log('⚠️  FAIR: Partial coverage - needs significant content improvement');
+      console.log(
+        "⚠️  FAIR: Partial coverage - needs significant content improvement"
+      );
     } else {
-      console.log('❌ POOR: Insufficient curriculum coverage - major gaps exist');
+      console.log(
+        "❌ POOR: Insufficient curriculum coverage - major gaps exist"
+      );
     }
 
     // Save detailed report
@@ -703,21 +782,23 @@ class ComprehensiveRAGValidator {
       gradeStats: Object.fromEntries(gradeStats),
       subjectStats: Object.fromEntries(subjectStats),
       difficultyStats: Object.fromEntries(difficultyStats),
-      detailedResults: results
+      detailedResults: results,
     };
 
-    console.log('\n💾 Detailed validation report saved to comprehensive_rag_validation.json');
+    console.log(
+      "\n💾 Detailed validation report saved to comprehensive_rag_validation.json"
+    );
   }
 }
 
 async function main() {
   const validator = new ComprehensiveRAGValidator();
-  
+
   try {
     await validator.connect();
     await validator.runComprehensiveValidation();
   } catch (error) {
-    console.error('❌ Validation failed:', error);
+    console.error("❌ Validation failed:", error);
   } finally {
     await validator.disconnect();
   }
