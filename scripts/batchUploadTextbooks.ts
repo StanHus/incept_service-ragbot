@@ -1,19 +1,19 @@
-import { promises as fs } from 'fs';
-import path from 'path';
-import pdf from 'pdf-parse';
-import { MongoClient, Db, Collection } from 'mongodb';
-import { MongoDBAtlasVectorSearch } from '@langchain/community/vectorstores/mongodb_atlas';
-import { CharacterTextSplitter } from 'langchain/text_splitter';
-import { OpenAIEmbeddings } from '@langchain/openai';
-import dotenv from 'dotenv';
+import { promises as fs } from "fs";
+import path from "path";
+import pdf from "pdf-parse";
+import { MongoClient, Db, Collection } from "mongodb";
+import { MongoDBAtlasVectorSearch } from "@langchain/community/vectorstores/mongodb_atlas";
+import { CharacterTextSplitter } from "langchain/text_splitter";
+import { OpenAIEmbeddings } from "@langchain/openai";
+import dotenv from "dotenv";
 
 // Load environment variables first
-dotenv.config({ path: '.env.local' });
+dotenv.config({ path: ".env.local" });
 
 interface UploadTracker {
   fileName: string;
   filePath: string;
-  status: 'pending' | 'processing' | 'completed' | 'failed';
+  status: "pending" | "processing" | "completed" | "failed";
   chunks?: number;
   error?: string;
   uploadedAt?: Date;
@@ -29,34 +29,37 @@ class TextbookUploader {
 
   constructor() {
     if (!process.env.MONGODB_URI) {
-      throw new Error('MONGODB_URI environment variable is not set');
+      throw new Error("MONGODB_URI environment variable is not set");
     }
     if (!process.env.OPENAI_API_KEY) {
-      throw new Error('OPENAI_API_KEY environment variable is not set');
+      throw new Error("OPENAI_API_KEY environment variable is not set");
     }
-    
+
     this.client = new MongoClient(process.env.MONGODB_URI);
-    this.db = this.client.db('chatter');
-    this.trackingCollection = this.db.collection<UploadTracker>('upload_tracking');
-    this.collection = this.db.collection('training_data');
+    this.db = this.client.db("chatter");
+    this.trackingCollection =
+      this.db.collection<UploadTracker>("upload_tracking");
+    this.collection = this.db.collection("training_data");
     this.embeddings = new OpenAIEmbeddings({
-      openAIApiKey: process.env.OPENAI_API_KEY
+      openAIApiKey: process.env.OPENAI_API_KEY,
     });
   }
 
   async connect() {
     await this.client.connect();
-    console.log('Connected to MongoDB');
-    
+    console.log("Connected to MongoDB");
+
     // Load already processed files
-    const processed = await this.trackingCollection.find({ status: 'completed' }).toArray();
-    processed.forEach(file => this.processedFiles.add(file.fileName));
+    const processed = await this.trackingCollection
+      .find({ status: "completed" })
+      .toArray();
+    processed.forEach((file) => this.processedFiles.add(file.fileName));
     console.log(`Found ${this.processedFiles.size} already processed files`);
   }
 
   async disconnect() {
     await this.client.close();
-    console.log('Disconnected from MongoDB');
+    console.log("Disconnected from MongoDB");
   }
 
   async processFile(filePath: string, fileName: string): Promise<void> {
@@ -67,16 +70,16 @@ class TextbookUploader {
     }
 
     console.log(`Processing: ${fileName}`);
-    
+
     // Update tracking to processing
     await this.trackingCollection.updateOne(
       { fileName },
-      { 
-        $set: { 
+      {
+        $set: {
           fileName,
           filePath,
-          status: 'processing' 
-        } 
+          status: "processing",
+        },
       },
       { upsert: true }
     );
@@ -85,25 +88,25 @@ class TextbookUploader {
       // Read PDF file
       const dataBuffer = await fs.readFile(filePath);
       const pdfData = await pdf(dataBuffer);
-      
+
       if (!pdfData.text || pdfData.text.trim().length === 0) {
-        throw new Error('No text content found in PDF');
+        throw new Error("No text content found in PDF");
       }
 
       // Split text into chunks
       const splitter = new CharacterTextSplitter({
         separator: "\n",
         chunkSize: 1000,
-        chunkOverlap: 100
+        chunkOverlap: 100,
       });
-      
+
       const chunks = await splitter.splitText(pdfData.text);
       console.log(`  Created ${chunks.length} chunks`);
 
       // Add metadata to each chunk
       const metadata = chunks.map(() => ({
         source: fileName,
-        type: 'textbook'
+        type: "textbook",
       }));
 
       // Upload to vector store
@@ -122,30 +125,30 @@ class TextbookUploader {
       // Update tracking to completed
       await this.trackingCollection.updateOne(
         { fileName },
-        { 
-          $set: { 
-            status: 'completed',
+        {
+          $set: {
+            status: "completed",
             chunks: chunks.length,
-            uploadedAt: new Date()
-          } 
+            uploadedAt: new Date(),
+          },
         }
       );
 
       this.processedFiles.add(fileName);
       console.log(`  ✓ Successfully uploaded ${fileName}`);
-
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      const errorMessage =
+        error instanceof Error ? error.message : "Unknown error";
       console.error(`  ✗ Failed to process ${fileName}: ${errorMessage}`);
-      
+
       // Update tracking to failed
       await this.trackingCollection.updateOne(
         { fileName },
-        { 
-          $set: { 
-            status: 'failed',
-            error: errorMessage
-          } 
+        {
+          $set: {
+            status: "failed",
+            error: errorMessage,
+          },
         }
       );
     }
@@ -153,63 +156,66 @@ class TextbookUploader {
 
   async processDirectory(dirPath: string): Promise<void> {
     const files = await fs.readdir(dirPath, { withFileTypes: true });
-    
+
     for (const file of files) {
       const fullPath = path.join(dirPath, file.name);
-      
+
       if (file.isDirectory()) {
         // Recursively process subdirectories
         await this.processDirectory(fullPath);
-      } else if (file.name.toLowerCase().endsWith('.pdf')) {
+      } else if (file.name.toLowerCase().endsWith(".pdf")) {
         await this.processFile(fullPath, file.name);
         // Add a small delay to avoid overloading the API
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
       }
     }
   }
 
   async getStatistics() {
-    const stats = await this.trackingCollection.aggregate([
-      {
-        $group: {
-          _id: '$status',
-          count: { $sum: 1 }
-        }
-      }
-    ]).toArray();
+    const stats = await this.trackingCollection
+      .aggregate([
+        {
+          $group: {
+            _id: "$status",
+            count: { $sum: 1 },
+          },
+        },
+      ])
+      .toArray();
 
-    const totalChunks = await this.trackingCollection.aggregate([
-      { $match: { status: 'completed' } },
-      { $group: { _id: null, total: { $sum: '$chunks' } } }
-    ]).toArray();
+    const totalChunks = await this.trackingCollection
+      .aggregate([
+        { $match: { status: "completed" } },
+        { $group: { _id: null, total: { $sum: "$chunks" } } },
+      ])
+      .toArray();
 
     return {
       statusCounts: stats,
-      totalChunks: totalChunks[0]?.total || 0
+      totalChunks: totalChunks[0]?.total || 0,
     };
   }
 }
 
 async function main() {
   const uploader = new TextbookUploader();
-  
+
   try {
     await uploader.connect();
-    
-    const textbooksDir = path.join(process.cwd(), 'textbooks');
+
+    const textbooksDir = path.join(process.cwd(), "textbooks", "instructions");
     console.log(`Starting batch upload from: ${textbooksDir}`);
-    console.log('========================================');
-    
+    console.log("========================================");
+
     await uploader.processDirectory(textbooksDir);
-    
-    console.log('\n========================================');
-    console.log('Upload Summary:');
+
+    console.log("\n========================================");
+    console.log("Upload Summary:");
     const stats = await uploader.getStatistics();
-    console.log('Status counts:', stats.statusCounts);
-    console.log('Total chunks created:', stats.totalChunks);
-    
+    console.log("Status counts:", stats.statusCounts);
+    console.log("Total chunks created:", stats.totalChunks);
   } catch (error) {
-    console.error('Fatal error:', error);
+    console.error("Fatal error:", error);
   } finally {
     await uploader.disconnect();
   }
